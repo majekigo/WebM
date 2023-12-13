@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Список заказов{% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'order_create' %}">Добавить заказ</a>{% endblock %}
+{% block content %}
+    <h1>Список заказов</h1>
+    <ul>
+        {% for order in orders %}
+            <li><a href="{% url 'order_detail' order.pk %}">Заказ №{{ order.order_number }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

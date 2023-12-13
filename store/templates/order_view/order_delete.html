@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block h2 %}Удалить заказ №{{ order.pk }}{% endblock %}
+
+{% block content %}
+  <p>Вы уверены, что хотите удалить заказ №{{ order.pk }}?</p>
+  <form method="post" action="{% url 'order_delete' pk=order.pk %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Удалить">
+  </form>
+{% endblock %}
+

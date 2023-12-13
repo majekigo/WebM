@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Информация о заказе{% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'catalog' %}">Каталог</a>{% endblock %}
+{% block content %}
+    <h1>Информация о заказе №{{ order.order_number }}</h1>
+    <p>Дата заказа: {{ order.order_date }}</p>
+    <p>Адрес доставки: {{ order.delivery_address }}</p>
+    <p>Телефон клиента: {{ order.customer_phone }}</p>
+    <p>Имя клиента: {{ order.customer_name }}</p>
+    <h2>Товары в заказе</h2>
+    <ul>
+        {% for position in order.orderposition_set.all %}
+            <li>{{ position.product.name }} - Количество: {{ position.quantity }} - Скидка: {{ position.discount }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'order_update' pk=order.pk %}">
+        <button class="btn btn-primary">Редактировать заказ</button>
+    <a href="{% url 'order_delete' pk=order.pk %}">
+        <button class="btn btn-danger">Удалить заказ</button>
+
+{% endblock %}

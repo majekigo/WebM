@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <h1>Продукты с тэгом: {{ tag.name }}</h1>
+    <ul>
+      {% for product in products %}
+        <li><a href="{% url 'view_product' product.id %}">{{ product.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

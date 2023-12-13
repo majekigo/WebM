@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'catalog' %}">Каталог</a>{% endblock %}
+
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img src="{% static 'image/welcome_image.jpg' %}" alt="Добро пожаловать" class="img-fluid mb-4">
+        <p class="lead">Мы рады видеть вас на нашем сайте! Исследуйте наш каталог продукции и находите уникальные товары.</p>
+        <p class="lead">Если у вас есть вопросы, не стесняйтесь связаться с нами.</p>
+        <a href="{% url 'catalog' %}" class="btn btn-primary btn-lg">Перейти в каталог</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

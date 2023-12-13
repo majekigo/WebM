@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} About {% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'tag_list' %}">Тэги</a>{% endblock %}
+{% block link2 %}<a class="nav-link" href="{% url 'category_list' %}">Категории</a>{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
+      </div>
+      <div class="col-md-6">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <p>Цена: {{ product.price }}</p>
+        <p>Категория:
+          {% if product.categories.all %}
+            {% with category=product.categories.first %}
+              <a href="{% url 'products_by_category' category_id=category.pk %}">{{ category.name }}</a>
+            {% endwith %}
+          {% else %}
+            Нет категории
+          {% endif %}
+        </p>
+        <p>Тэги:
+          {% for tag in product.tags.all %}
+            <a href="{% url 'products_by_tag' tag.name %}">{{ tag.name }}</a>
+          {% endfor %}
+        </p>
+        <a href="{% url 'product_update' product.id %}" class="btn btn-primary">Изменить</a>
+        <a href="{% url 'product_delete' product.id %}" class="btn btn-danger">Удалить</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

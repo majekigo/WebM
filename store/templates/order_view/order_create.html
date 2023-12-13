@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Создание заказа{% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'catalog' %}">Каталог</a>{% endblock %}
+{% block content %}
+    <h1>Создание заказа</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ formset.management_form }}
+        {% for form in formset.forms %}
+            {{ form.as_table }}
+        {% endfor %}
+        <button type="submit">Создать заказ</button>
+    </form>
+{% endblock %}

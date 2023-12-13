@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Список тегов{% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'catalog' %}">Каталог</a>{% endblock %}
+{% block link2 %}<a class="nav-link" href="{% url 'tag_create' %}">Добавить тег</a>{% endblock %}
+{% block content %}
+    <h1>Список тегов</h1>
+    <ul>
+        {% for tag in tags %}
+            <li><a href="{% url 'products_by_tag' tag.name %}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

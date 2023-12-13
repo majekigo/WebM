@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block h2 %}Тег: {{ tag.name }}{% endblock %}
+
+{% block content %}
+  <p><strong>ID:</strong> {{ tag.id }}</p>
+  <p><strong>Описание:</strong> {{ tag.description }}</p>
+{% endblock %}

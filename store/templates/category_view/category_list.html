@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Список категорий{% endblock %}
+{% block link1 %}<a class="nav-link" href="{% url 'add_category' %}">Добавить категорию</a>{% endblock %}
+{% block link2 %}<a class="nav-link" href="{% url 'catalog' %}">Каталог</a>{% endblock %}
+{% block content %}
+    <h1>Список категорий</h1>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'products_by_category' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
